@@ -1,5 +1,5 @@
 # TalentBridge Recruitment API Documentation
-
+**Language:** [English](README.md) | [Tiếng Việt](README.vi.md)
 > Portfolio case study demonstrating API documentation, OpenAPI,
 > developer experience, docs-as-code, bilingual technical writing,
 > and API change management.
