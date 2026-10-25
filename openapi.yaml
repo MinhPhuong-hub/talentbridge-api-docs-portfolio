@@ -1,0 +1,618 @@
+openapi: 3.0.3
+
+info:
+  title: TalentBridge Recruitment API
+  version: 1.1.0
+  description: |
+    API for managing jobs and job applications on the fictional
+    TalentBridge recruitment platform.
+
+servers:
+  - url: http://127.0.0.1:4010
+    description: Local Prism mock server
+
+  - url: https://api.talentbridge.example/v1
+    description: Example production URL
+
+tags:
+  - name: Jobs
+    description: Job discovery and management
+
+  - name: Applications
+    description: Job application management
+
+paths:
+
+  /jobs:
+
+    get:
+      tags:
+        - Jobs
+      operationId: listJobs
+      summary: List jobs
+      description: |
+        Returns available jobs using cursor-based pagination.
+
+      parameters:
+
+        - name: location
+          in: query
+          required: false
+          description: Filter jobs by location.
+          schema:
+            type: string
+
+        - name: limit
+          in: query
+          required: false
+          description: Maximum number of jobs to return.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+
+        - name: cursor
+          in: query
+          required: false
+          description: |
+            Opaque cursor returned by a previous list request.
+          schema:
+            type: string
+
+        - name: sort
+          in: query
+          required: false
+          description: Sort order for the returned jobs.
+          schema:
+            type: string
+            enum:
+              - createdAt:desc
+              - createdAt:asc
+              - title:asc
+              - title:desc
+            default: createdAt:desc
+
+      responses:
+
+        "200":
+          description: Jobs returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobList"
+
+              examples:
+
+                normal:
+                  summary: Jobs are available
+                  value:
+                    items:
+                      - id: job_123
+                        title: Backend Developer
+                        description: >
+                          Build and maintain recruitment platform APIs.
+                        location: Ho Chi Minh City
+                        recruiterId: user_901
+                        createdAt: "2026-10-20T10:00:00Z"
+
+                      - id: job_124
+                        title: Technical Writer
+                        description: >
+                          Create developer documentation and API guides.
+                        location: Remote
+                        recruiterId: user_902
+                        createdAt: "2026-10-21T08:30:00Z"
+
+                    nextCursor: cursor_abc123
+
+                empty:
+                  summary: No jobs match the filters
+                  value:
+                    items: []
+                    nextCursor: null
+
+    post:
+      tags:
+        - Jobs
+      operationId: createJob
+      summary: Create a job
+      description: |
+        Creates a new job.
+
+        The authenticated user must have the recruiter role.
+        The recruiter ID is derived from the authenticated user
+        and is not provided in the request body.
+
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateJobRequest"
+            example:
+              title: Backend Developer
+              description: Build and maintain recruitment platform APIs.
+              location: Ho Chi Minh City
+
+      responses:
+
+        "201":
+          description: Job created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+              example:
+                id: job_123
+                title: Backend Developer
+                description: Build and maintain recruitment platform APIs.
+                location: Ho Chi Minh City
+                recruiterId: user_901
+                createdAt: "2026-10-24T12:00:00Z"
+
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+  /jobs/{jobId}:
+
+    get:
+      tags:
+        - Jobs
+      operationId: getJob
+      summary: Get a job
+      description: Returns one job by its identifier.
+
+      parameters:
+        - $ref: "#/components/parameters/JobId"
+
+      responses:
+
+        "200":
+          description: Job returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+              example:
+                id: job_123
+                title: Backend Developer
+                description: Build and maintain recruitment platform APIs.
+                location: Ho Chi Minh City
+                recruiterId: user_901
+                createdAt: "2026-10-20T10:00:00Z"
+
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /jobs/{jobId}/applications:
+
+    post:
+      tags:
+        - Applications
+      operationId: createApplication
+      summary: Apply for a job
+      description: |
+        Creates an application for a job.
+
+        The authenticated user must have the candidate role.
+        `jobId` is taken from the URL.
+        `candidateId` is derived from the authenticated user.
+        New applications are created with the `pending` status.
+
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: "#/components/parameters/JobId"
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateApplicationRequest"
+            example:
+              coverLetter: >
+                I have three years of experience writing API documentation.
+
+      responses:
+
+        "201":
+          description: Application created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Application"
+              example:
+                id: app_456
+                jobId: job_123
+                candidateId: user_321
+                status: pending
+                coverLetter: >
+                  I have three years of experience writing API documentation.
+                createdAt: "2026-10-24T13:00:00Z"
+
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+        "409":
+          $ref: "#/components/responses/Conflict"
+
+    get:
+      tags:
+        - Applications
+      operationId: listJobApplications
+      summary: List applications for a job
+      description: |
+        Returns applications submitted for the specified job.
+
+        Only the recruiter who owns the job can access the list.
+
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - $ref: "#/components/parameters/JobId"
+
+      responses:
+
+        "200":
+          description: Applications returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApplicationList"
+              example:
+                items:
+                  - id: app_456
+                    jobId: job_123
+                    candidateId: user_321
+                    status: pending
+                    coverLetter: >
+                      I have three years of experience writing API documentation.
+                    createdAt: "2026-10-24T13:00:00Z"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /applications/{applicationId}:
+
+    patch:
+      tags:
+        - Applications
+      operationId: updateApplicationStatus
+      summary: Update application status
+      description: |
+        Updates the status of an application.
+
+        Only an authorized recruiter can perform this operation.
+
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: Unique identifier of the application.
+          schema:
+            type: string
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateApplicationStatusRequest"
+            example:
+              status: accepted
+
+      responses:
+
+        "200":
+          description: Application updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Application"
+
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+
+components:
+
+  securitySchemes:
+
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        Bearer access token supplied in the Authorization header.
+
+  parameters:
+
+    JobId:
+      name: jobId
+      in: path
+      required: true
+      description: Unique identifier of the job.
+      schema:
+        type: string
+
+  schemas:
+
+    CreateJobRequest:
+      type: object
+      required:
+        - title
+        - description
+        - location
+      properties:
+
+        title:
+          type: string
+          minLength: 3
+          maxLength: 100
+          description: Job title.
+
+        description:
+          type: string
+          minLength: 20
+          maxLength: 5000
+          description: Detailed job description.
+
+        location:
+          type: string
+          minLength: 2
+          maxLength: 100
+          description: Job location or Remote.
+
+    Job:
+      type: object
+      required:
+        - id
+        - title
+        - description
+        - location
+        - recruiterId
+        - createdAt
+      properties:
+
+        id:
+          type: string
+          readOnly: true
+
+        title:
+          type: string
+
+        description:
+          type: string
+
+        location:
+          type: string
+
+        recruiterId:
+          type: string
+          readOnly: true
+
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+
+    JobList:
+      type: object
+      required:
+        - items
+        - nextCursor
+      properties:
+
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Job"
+
+        nextCursor:
+          type: string
+          nullable: true
+          description: |
+            Cursor for the next page.
+            Null when there are no additional results.
+
+    CreateApplicationRequest:
+      type: object
+      properties:
+
+        coverLetter:
+          type: string
+          maxLength: 1000
+          description: Optional cover letter submitted by the candidate.
+
+    Application:
+      type: object
+      required:
+        - id
+        - jobId
+        - candidateId
+        - status
+        - createdAt
+      properties:
+
+        id:
+          type: string
+          readOnly: true
+
+        jobId:
+          type: string
+          readOnly: true
+
+        candidateId:
+          type: string
+          readOnly: true
+
+        status:
+          type: string
+          enum:
+            - pending
+            - accepted
+            - rejected
+
+        coverLetter:
+          type: string
+          nullable: true
+
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+
+    ApplicationList:
+      type: object
+      required:
+        - items
+      properties:
+
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Application"
+
+    UpdateApplicationStatusRequest:
+      type: object
+      required:
+        - status
+      properties:
+
+        status:
+          type: string
+          enum:
+            - accepted
+            - rejected
+
+    Problem:
+      type: object
+      required:
+        - type
+        - title
+        - status
+        - detail
+      properties:
+
+        type:
+          type: string
+          description: URI identifying the type of problem.
+
+        title:
+          type: string
+          description: Short human-readable summary.
+
+        status:
+          type: integer
+          description: HTTP status code.
+
+        detail:
+          type: string
+          description: Human-readable explanation of this occurrence.
+
+        instance:
+          type: string
+          description: Identifies the request or resource related to the error.
+
+  responses:
+
+    BadRequest:
+      description: The request is invalid.
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+          example:
+            type: https://api.talentbridge.example/problems/invalid-request
+            title: Invalid request
+            status: 400
+            detail: The request contains invalid or missing fields.
+            instance: /jobs
+
+    Unauthorized:
+      description: Authentication is missing or invalid.
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+          example:
+            type: https://api.talentbridge.example/problems/unauthorized
+            title: Authentication required
+            status: 401
+            detail: A valid access token is required.
+
+    Forbidden:
+      description: The authenticated user does not have permission.
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+          example:
+            type: https://api.talentbridge.example/problems/forbidden
+            title: Forbidden
+            status: 403
+            detail: You do not have permission to perform this operation.
+
+    NotFound:
+      description: The requested resource does not exist.
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+          example:
+            type: https://api.talentbridge.example/problems/not-found
+            title: Resource not found
+            status: 404
+            detail: The requested resource could not be found.
+
+    Conflict:
+      description: The request conflicts with the current resource state.
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/Problem"
+          example:
+            type: https://api.talentbridge.example/problems/duplicate-application
+            title: Application already exists
+            status: 409
+            detail: The candidate has already applied for this job.
