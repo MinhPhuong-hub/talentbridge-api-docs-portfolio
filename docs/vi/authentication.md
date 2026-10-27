@@ -45,3 +45,8 @@ Ví dụ: ứng viên không thể tạo tin tuyển dụng vì thao tác này y
 > **Lưu ý về mock:** Token minh họa và Prism mock server không chứng minh việc xác thực hay phân quyền thật. Quy tắc phân quyền ở đây là hành vi được mô tả trong API contract giả lập.
 
 [← Mục lục tiếng Việt](README.md) · [English](../en/authentication.md)
+
+
+---
+
+**Điều hướng:** [Mục lục tiếng Việt](README.md) · [English version](../en/authentication.md)

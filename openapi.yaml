@@ -567,7 +567,6 @@ components:
             title: Invalid request
             status: 400
             detail: The request contains invalid or missing fields.
-            instance: /jobs
 
     Unauthorized:
       description: Authentication is missing or invalid.

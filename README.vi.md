@@ -6,6 +6,22 @@
 
 **TalentBridge là nền tảng tuyển dụng giả lập được xây dựng cho mục đích portfolio; đây không phải sản phẩm thương mại đang vận hành.**
 
+## Điểm nổi bật của portfolio
+
+Portfolio tài liệu API minh họa OpenAPI, docs-as-code, ví dụ chạy được, biên soạn kỹ thuật song ngữ và quản lý thay đổi API.
+
+| Tài liệu | Năng lực minh họa |
+|---|---|
+| [`openapi.yaml`](openapi.yaml) | Đặc tả API theo hợp đồng |
+| [Ghi chú rà soát API](docs/vi/api-review-notes.md) | Nhận diện điểm mơ hồ và giả định trong portfolio |
+| [Jobs API](docs/vi/jobs-api.md) | Tài liệu tham chiếu cho developer |
+| [Xử lý lỗi](docs/vi/errors.md) | HTTP status và hướng xử lý |
+| [Release notes](docs/vi/release-notes/v1.1.0.md) | Truyền đạt thay đổi |
+| [Migration guide](docs/vi/migration-v1-to-v2.md) | Kịch bản breaking change giả lập |
+| [Quy chuẩn viết](docs/vi/style-guide.md) | Nhất quán biên tập |
+| [Ví dụ chạy được](examples/README.md) | Minh họa contract/mock tại máy |
+| [Tiếng Việt](docs/vi/README.md) / [English](docs/en/README.md) | Tài liệu song ngữ |
+
 ## Giới thiệu
 
 Repository minh họa quy trình tiếp nhận API contract, làm rõ yêu cầu, viết tài liệu cho nhà phát triển tích hợp, kiểm tra ví dụ và quản lý phiên bản tài liệu.
@@ -59,6 +75,8 @@ curl -H "Prefer: example=normal" http://127.0.0.1:4010/jobs
 ```
 
 *Lưu ý:* Prism mô phỏng phản hồi dựa trên OpenAPI; không thay thế backend thật và không chứng minh việc kiểm tra phân quyền thực tế.
+
+**Giới hạn mock server:** Prism sinh phản hồi dựa trên `openapi.yaml`; đây không phải backend production và không xác minh xác thực thực tế, phân quyền, lưu trữ dữ liệu, thực thi quy tắc nghiệp vụ hay tích hợp dịch vụ.
 
 ## Tài liệu tiếng Việt
 

@@ -49,3 +49,8 @@ Authentication answers:
 Authorization answers:
 
 **Are you allowed to do this?**
+
+
+---
+
+**Navigation:** [English documentation index](README.md) · [Bản tiếng Việt](../vi/authentication.md)

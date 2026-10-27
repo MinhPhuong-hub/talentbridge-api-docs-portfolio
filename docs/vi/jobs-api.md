@@ -109,3 +109,8 @@ Xem [Xử lý lỗi](errors.md) để biết cấu trúc response lỗi dùng ch
 > Tên miền `api.talentbridge.example` chỉ là ví dụ; để chạy thử hãy dùng mock server tại `http://127.0.0.1:4010`.
 
 [← Mục lục tiếng Việt](README.md) · [English](../en/jobs-api.md)
+
+
+---
+
+**Điều hướng:** [Mục lục tiếng Việt](README.md) · [English version](../en/jobs-api.md)

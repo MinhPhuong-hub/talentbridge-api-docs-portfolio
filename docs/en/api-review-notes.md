@@ -1,7 +1,6 @@
 # API review and requirement clarification
 
-This document records questions raised while converting product
-requirements into developer documentation.
+This document records hypothetical requirement-clarification questions for the fictional TalentBridge portfolio. No real engineering or business stakeholders were consulted.
 
 It demonstrates the clarification process that should occur before
 publishing API behavior as fact.
@@ -13,12 +12,12 @@ publishing API behavior as fact.
 The Job model contains `recruiterId`, but the create-job request did not
 specify whether the client should send it.
 
-**Question for engineering**
+**Question an engineer or product owner would need to answer**
 
 Is `recruiterId` supplied by the client, or derived from the authenticated
 user?
 
-**Resolved behavior**
+**Assumed behavior for this portfolio scenario**
 
 The server derives `recruiterId` from the authenticated recruiter.
 
@@ -34,7 +33,7 @@ The server derives `recruiterId` from the authenticated recruiter.
 
 Can candidates specify an application status when applying?
 
-**Resolved behavior**
+**Assumed behavior for this portfolio scenario**
 
 No. New applications always start with `pending`.
 
@@ -48,7 +47,7 @@ Only authorized recruiters can later change the status.
 
 What happens when the same candidate applies for the same job twice?
 
-**Resolved behavior**
+**Assumed behavior for this portfolio scenario**
 
 The API returns:
 
@@ -64,7 +63,7 @@ This behavior is documented in both OpenAPI and the error guide.
 
 Can every recruiter list applications for every job?
 
-**Resolved behavior**
+**Assumed behavior for this portfolio scenario**
 
 No.
 
@@ -78,13 +77,13 @@ Other authenticated users receive `403 Forbidden`.
 
 **Question**
 
-Can clients decode the cursor or construct their own cursor values?
+Should clients interpret the cursor or construct their own cursor values?
 
-**Resolved behavior**
+**Assumed behavior for this portfolio scenario**
 
 No.
 
-The cursor is opaque and must be reused exactly as returned by the API.
+The cursor is opaque. Clients should reuse it exactly as returned and should not parse or modify it.
 
 ---
 
@@ -94,7 +93,7 @@ The cursor is opaque and must be reused exactly as returned by the API.
 
 Which values may recruiters send when reviewing a pending application?
 
-**Resolved behavior**
+**Assumed behavior for this portfolio scenario**
 
 The review endpoint accepts:
 
@@ -113,3 +112,8 @@ invent a rule.
 The writer should identify the ambiguity, ask the responsible engineer
 or business stakeholder, record the decision, and then update the API
 contract and documentation consistently.
+
+
+---
+
+**Navigation:** [English documentation index](README.md) · [Bản tiếng Việt](../vi/api-review-notes.md)

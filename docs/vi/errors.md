@@ -61,3 +61,8 @@ Không tìm thấy tài nguyên được yêu cầu. Kiểm tra lại mã địn
 Request xung đột với trạng thái hiện tại của hệ thống. Ví dụ, API trả về `409` khi cùng một ứng viên gửi hồ sơ ứng tuyển lần thứ hai cho cùng một việc làm.
 
 [← Mục lục tiếng Việt](README.md) · [English](../en/errors.md)
+
+
+---
+
+**Điều hướng:** [Mục lục tiếng Việt](README.md) · [English version](../en/errors.md)

@@ -1,6 +1,6 @@
 # Tài liệu TalentBridge API — Tiếng Việt
 
-**[English](../en/getting-started.md) | Tiếng Việt**
+**[English](../en/README.md) | Tiếng Việt**
 
 | Chủ đề | Tiếng Việt | English |
 |---|---|---|
@@ -12,6 +12,6 @@
 | Migration v1 → v2 | [Hướng dẫn](migration-v1-to-v2.md) | [Migration guide](../en/migration-v1-to-v2.md) |
 | Release notes v1.1.0 | [Ghi chú](release-notes/v1.1.0.md) | [Release notes](../en/release-notes/v1.1.0.md) |
 
-[Quy chuẩn viết tài liệu tiếng Việt](style-guide.md) · [Trang giới thiệu tiếng Việt](../../README.vi.md)
+[Ví dụ chạy với Prism](../../examples/README.vi.md) · [Quy chuẩn viết tài liệu tiếng Việt](style-guide.md) · [Trang giới thiệu tiếng Việt](../../README.vi.md)
 
 > Đây là tài liệu của API giả lập phục vụ portfolio. Các endpoint production dùng tên miền `.example` không phải dịch vụ có thể truy cập.

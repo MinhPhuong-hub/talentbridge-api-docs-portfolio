@@ -75,3 +75,8 @@ Các endpoint được bảo vệ yêu cầu bearer access token:
 ```text
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
+
+
+---
+
+**Điều hướng:** [Mục lục tiếng Việt](README.md) · [English version](../en/getting-started.md)

@@ -1,5 +1,15 @@
 # Changelog
 
+> Release history below belongs to the fictional TalentBridge portfolio, not a deployed service.
+
+## Documentation maintenance (unreleased)
+
+- Improved English–Vietnamese navigation and technical terminology.
+- Clarified Prism mock limitations and the hypothetical v2 migration.
+- Added contract/mock example instructions and new demonstration scripts.
+- Made the reusable 400 example endpoint-neutral without changing the intended API behavior.
+
+
 All notable changes to the TalentBridge API documentation are recorded
 in this file.
 

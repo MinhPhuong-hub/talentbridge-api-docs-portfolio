@@ -70,3 +70,8 @@ The request conflicts with the current state of the system.
 
 For example, the API returns `409` when a candidate attempts to apply
 for the same job more than once.
+
+
+---
+
+**Navigation:** [English documentation index](README.md) · [Bản tiếng Việt](../vi/errors.md)

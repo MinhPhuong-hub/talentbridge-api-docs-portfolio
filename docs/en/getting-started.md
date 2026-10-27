@@ -74,3 +74,8 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
 See [Authentication](authentication.md) for details.
+
+
+---
+
+**Navigation:** [English documentation index](README.md) · [Bản tiếng Việt](../vi/getting-started.md)
