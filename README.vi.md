@@ -115,3 +115,7 @@ Các thay đổi API được theo dõi qua [CHANGELOG.md](CHANGELOG.md), releas
 - [Applications API](docs/vi/applications-api.md)
 - [Sổ quyết định API](docs/vi/contract-decision-record.md)
 - [Case study portfolio](docs/vi/portfolio-case-study.md)
+
+### Kiểm tra ví dụ tài liệu có thể sao chép
+
+Chạy `python scripts/check_markdown_examples.py` sau khi cài `requirements-docs.txt`. Script phân tích cURL trong Markdown EN/VI, đối chiếu method/path/query và JSON request/response với OpenAPI. Mỗi khối JSON cần có chú thích `doc-test`; chỉ các đoạn so sánh phiên bản ngoài phạm vi v1.1 mới được `skip` kèm lý do. Đây là **kiểm tra hợp đồng tĩnh**, không phải thực thi HTTP hoặc xác nhận hành vi backend. CI chạy kiểm tra này cùng các bước lint hiện có.

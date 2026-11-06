@@ -1,6 +1,6 @@
 # API contract decision record
 
-> **Portfolio classification:** Fictional case study. The decisions below are **proposed documentation assumptions**, not confirmed production behavior. No actual backend, production identity system, customer traffic, or developer sign-off is claimed.
+> **Portfolio classification:** Fictional case study. The register distinguishes **approved fictional-contract decisions** from open design questions. Approval is an editorial decision for this case study only, not confirmation of production behavior. No actual backend, production identity system, customer traffic, or developer sign-off is claimed.
 
 ## Why this record exists
 
@@ -14,10 +14,12 @@ An OpenAPI operation lists the syntax a client can send. Integrators also need e
 | TB-002 | Who supplies `recruiterId`? | Review notes indicate token-derived identity | Server derives identity; ignore/reject client-supplied ownership | **Proposed** | Confirm exact request schema, behavior on extra fields, token claims |
 | TB-003 | Who may update an application? | PATCH is recruiter-restricted | Only an owner/authorized member of the associated job's recruiting team | **Open** | Specify tenant isolation, ownership, 403 vs 404 policy |
 | TB-004 | Which status transitions are valid? | PATCH accepts `accepted` or `rejected` | Only `pending` → `accepted` or `pending` → `rejected` | **Open** | Define full state machine, repeated updates, invalid transitions |
-| TB-005 | Duplicate applications | Error guidance mentions HTTP 409 | One active application per (candidate, job) | **Open** | Define uniqueness boundary, withdrawn applications, race conditions |
+| TB-005 | Duplicate applications | OpenAPI v1.1.0 documents `409` for repeat submission by the same candidate to the same job | Reject a repeat submission for the same candidate–job pair with `409 Conflict` | **Approved in fictional v1.1 contract** | Details remain **Open**: withdrawn applications, race conditions, retry/idempotency, exact uniqueness enforcement |
 | TB-006 | Cursor pagination | Getting started mentions `nextCursor` | Opaque cursor; absent/null cursor means no more results | **Open** | Define stable ordering, filters, invalid/expired cursor behavior |
 | TB-007 | API error representation | Error documentation lists statuses | Structured stable application error code in addition to HTTP status | **Open** | Confirm schema and existing client compatibility |
 | TB-008 | Retry safety | Not yet established | GET safe to retry; POST not guaranteed idempotent | **Open** | Confirm idempotency-key support, timeout handling, retry headers |
+
+**TB-005 scope:** The `409` outcome is normative only within the fictional v1.1 API contract, not a demonstrated backend capability. The uniqueness policy for withdrawn applications and concurrency remains undecided; no production claim is made.
 
 ## Example: application status transition questions
 

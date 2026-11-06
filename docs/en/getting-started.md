@@ -32,6 +32,7 @@ curl \
 
 Example response:
 
+<!-- doc-test: response GET /jobs 200 -->
 ```json
 {
   "items": [

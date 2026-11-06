@@ -22,6 +22,7 @@ curl -i -X POST 'http://127.0.0.1:4010/jobs/job_123/applications' \
 
 **201 Created** — Example JSON response:
 
+<!-- doc-test: response POST /jobs/{jobId}/applications 201 -->
 ```json
 {"id":"app_456","jobId":"job_123","candidateId":"user_321","status":"pending","coverLetter":"I have experience documenting HTTP APIs.","createdAt":"2026-10-24T13:00:00Z"}
 ```

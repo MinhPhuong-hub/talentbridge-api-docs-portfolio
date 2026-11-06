@@ -146,3 +146,7 @@ python scripts/check_openapi.py
 ```
 
 These checks validate Markdown structure, relative links, and OpenAPI examples **against the written contract**, not against a production backend. GitHub Actions also runs an OpenAPI linter. For a guided review, start with the [portfolio case study](docs/en/portfolio-case-study.md), then follow the [contract decision record](docs/en/contract-decision-record.md).
+
+### Validate copyable documentation examples
+
+Run `python scripts/check_markdown_examples.py` after installing `requirements-docs.txt`. The check parses cURL commands in EN/VI Markdown, resolves method/path/query parameters against OpenAPI, validates JSON request bodies and explicitly annotated response snippets against their schemas, and rejects unclassified JSON fences. `doc-test: skip` is reserved for explicitly documented out-of-version comparison fragments. This is **static contract validation**, not an HTTP execution or proof of backend behavior. CI runs this alongside OpenAPI and Markdown lint.
