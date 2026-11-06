@@ -36,7 +36,7 @@ Server lấy `recruiterId` từ nhà tuyển dụng đã xác thực.
 
 **Câu hỏi:** Điều gì xảy ra khi một ứng viên ứng tuyển hai lần vào cùng một việc làm?
 
-**Hành vi đã chốt:** API trả về `409 Conflict`. Quy tắc này được ghi trong OpenAPI và tài liệu xử lý lỗi.
+**Quyết định trong hợp đồng giả lập v1.1 (TB-005):** API mô tả phản hồi `409 Conflict` cho việc nộp lại cùng candidate–job. Chưa được xác minh với backend; xử lý hồ sơ đã rút, đồng thời và retry vẫn để mở.
 
 ---
 

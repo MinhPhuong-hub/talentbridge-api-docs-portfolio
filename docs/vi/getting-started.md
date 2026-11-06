@@ -33,6 +33,7 @@ curl \
 
 Response mẫu:
 
+<!-- doc-test: response GET /jobs 200 -->
 ```json
 {
   "items": [

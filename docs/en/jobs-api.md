@@ -36,6 +36,7 @@ curl \
 
 ### 200 response
 
+<!-- doc-test: response GET /jobs 200 -->
 ```json
 {
   "items": [
@@ -89,6 +90,7 @@ curl -X POST \
 
 ### 201 response
 
+<!-- doc-test: response POST /jobs 201 -->
 ```json
 {
   "id": "job_123",

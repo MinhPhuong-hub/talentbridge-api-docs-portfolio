@@ -6,7 +6,7 @@
 |---|---|---|
 | `recruiterId` | Lấy từ người dùng xác thực | Quy tắc ánh xạ người dùng, tổ chức/tenant |
 | `candidateId` | Lấy từ người dùng xác thực | Ai có thể ứng tuyển thay người khác? |
-| Hồ sơ trùng | `409` cùng candidate–job | Định nghĩa trùng, xử lý đồng thời, retry |
+| Hồ sơ trùng (TB-005) | **Đã chấp thuận trong hợp đồng giả lập v1.1:** cùng ứng viên nộp lại vào cùng job nhận `409 Conflict`; không phải bằng chứng backend thật | **Chưa quyết định:** hồ sơ đã rút, race condition, idempotency/retry và cách thực thi uniqueness |
 | Quyền xem hồ sơ | Recruiter sở hữu job | Truy cập trong tổ chức, `403`/`404` |
 | Cursor | Giá trị mờ đục (`opaque`) | Hết hạn, ràng buộc bộ lọc, thứ tự |
 | PATCH status | Chỉ nhận `accepted`, `rejected` | Ma trận chuyển trạng thái, cập nhật lặp |

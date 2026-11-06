@@ -25,6 +25,7 @@ Clients using these fields must be updated before migrating to v2.
 
 ### v1
 
+<!-- doc-test: skip migration comparison fragments are deliberately partial and not v1.1 response objects -->
 ```json
 {
   "id": "job_123",
@@ -34,6 +35,7 @@ Clients using these fields must be updated before migrating to v2.
 
 ### v2
 
+<!-- doc-test: skip proposed v2 fragment is not described by the v1.1 contract -->
 ```json
 {
   "id": "job_123",

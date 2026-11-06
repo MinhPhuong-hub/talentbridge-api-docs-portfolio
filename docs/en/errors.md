@@ -10,6 +10,7 @@ Content-Type: application/problem+json
 
 Example:
 
+<!-- doc-test: response GET /jobs/{jobId} 404 -->
 ```json
 {
   "type": "https://api.talentbridge.example/problems/not-found",
