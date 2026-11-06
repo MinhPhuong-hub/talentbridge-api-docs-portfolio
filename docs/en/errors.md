@@ -75,3 +75,9 @@ for the same job more than once.
 ---
 
 **Navigation:** [English documentation index](README.md) · [Bản tiếng Việt](../vi/errors.md)
+
+## Handling errors in a client
+
+Use the HTTP status for broad behavior and the problem `type` for the specified error category. Do not parse `detail` as a stable machine-readable identifier. A `409` on an application submission is a business conflict: inspect the request or user state instead of automatically retrying the same request. The fictional API does not define retry intervals, request IDs, or an idempotency-key contract.
+
+**Prism note:** selecting an error with `Prefer: code=409` only produces a mock response; it does not verify duplicate-detection logic.

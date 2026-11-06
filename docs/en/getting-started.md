@@ -48,6 +48,9 @@ Example response:
 }
 ```
 
+
+> **Mock limitation:** Prism returns examples; it does not implement pagination state, sorting, filtering, access control or persistence. A cursor returned by a mock response must not be treated as evidence that fetching a second page works.
+
 ## Pagination
 
 Use the `limit` parameter to control the maximum number of jobs returned.

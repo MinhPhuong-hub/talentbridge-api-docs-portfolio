@@ -80,3 +80,6 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 ---
 
 **Điều hướng:** [Mục lục tiếng Việt](README.md) · [English version](../en/getting-started.md)
+
+
+> **Giới hạn mock:** Prism trả ví dụ theo schema, không thực hiện phân trang có trạng thái, sắp xếp, lọc, phân quyền hay lưu dữ liệu. Cursor trong response mock không chứng minh có thể lấy trang tiếp theo thật.

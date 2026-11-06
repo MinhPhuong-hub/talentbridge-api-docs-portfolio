@@ -4,6 +4,11 @@
 
 ## Documentation maintenance (unreleased)
 
+- Added bilingual Applications API references and explicit unresolved status-transition requirements.
+- Added contract decision records, portfolio case studies and mock limitations.
+- Corrected release-note editorial artifacts and qualified compatibility claims.
+- Added local documentation audit and CI validation.
+
 - Improved English–Vietnamese navigation and technical terminology.
 - Clarified Prism mock limitations and the hypothetical v2 migration.
 - Added contract/mock example instructions and new demonstration scripts.

@@ -7,6 +7,7 @@
 | Bắt đầu sử dụng | [Hướng dẫn](getting-started.md) | [Getting started](../en/getting-started.md) |
 | Xác thực | [Hướng dẫn](authentication.md) | [Authentication](../en/authentication.md) |
 | Jobs API | [Tham chiếu](jobs-api.md) | [Jobs API](../en/jobs-api.md) |
+| Applications API | [Tham chiếu](applications-api.md) | [Reference](../en/applications-api.md) |
 | Xử lý lỗi | [Hướng dẫn](errors.md) | [Error handling](../en/errors.md) |
 | Rà soát yêu cầu | [Ghi chú](api-review-notes.md) | [API review notes](../en/api-review-notes.md) |
 | Migration v1 → v2 | [Hướng dẫn](migration-v1-to-v2.md) | [Migration guide](../en/migration-v1-to-v2.md) |

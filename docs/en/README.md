@@ -7,6 +7,7 @@
 | Getting started | [Guide](getting-started.md) | [Hướng dẫn](../vi/getting-started.md) |
 | Authentication | [Guide](authentication.md) | [Hướng dẫn](../vi/authentication.md) |
 | Jobs API | [Reference](jobs-api.md) | [Tham chiếu](../vi/jobs-api.md) |
+| Applications API | [Reference](applications-api.md) | [Tham chiếu](../vi/applications-api.md) |
 | Error handling | [Guide](errors.md) | [Xử lý lỗi](../vi/errors.md) |
 | Requirement clarification | [Review notes](api-review-notes.md) | [Ghi chú](../vi/api-review-notes.md) |
 | v1 to v2 migration | [Scenario](migration-v1-to-v2.md) | [Kịch bản](../vi/migration-v1-to-v2.md) |

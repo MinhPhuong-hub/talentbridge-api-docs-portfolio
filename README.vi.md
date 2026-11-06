@@ -109,3 +109,9 @@ Các thay đổi API được theo dõi qua [CHANGELOG.md](CHANGELOG.md), releas
 **Quản lý thay đổi:** Phân biệt thay đổi tương thích và breaking change, viết release notes và migration guide.
 
 **Biên soạn song ngữ:** Duy trì hai phiên bản Anh–Việt nhất quán về định danh và hành vi kỹ thuật.
+
+## Bổ sung đánh giá hợp đồng API
+
+- [Applications API](docs/vi/applications-api.md)
+- [Sổ quyết định API](docs/vi/contract-decision-record.md)
+- [Case study portfolio](docs/vi/portfolio-case-study.md)

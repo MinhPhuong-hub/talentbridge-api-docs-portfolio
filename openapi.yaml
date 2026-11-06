@@ -33,6 +33,9 @@ paths:
       description: |
         Returns available jobs using cursor-based pagination.
 
+        Prism returns illustrative examples and does not implement cursor
+        pagination, filtering, or sorting. See docs/en/mock-vs-production.md.
+
       parameters:
 
         - name: location
@@ -121,6 +124,7 @@ paths:
         Creates a new job.
 
         The authenticated user must have the recruiter role.
+        This is a portfolio contract assumption, not an enforced Prism check.
         The recruiter ID is derived from the authenticated user
         and is not provided in the request body.
 
@@ -205,6 +209,7 @@ paths:
         Creates an application for a job.
 
         The authenticated user must have the candidate role.
+        This is a portfolio contract assumption, not an enforced Prism check.
         `jobId` is taken from the URL.
         `candidateId` is derived from the authenticated user.
         New applications are created with the `pending` status.
@@ -267,6 +272,9 @@ paths:
 
         Only the recruiter who owns the job can access the list.
 
+        This is an assumed design rule in the fictional contract,
+        not an authorization check performed by Prism.
+
       security:
         - bearerAuth: []
 
@@ -311,6 +319,11 @@ paths:
         Updates the status of an application.
 
         Only an authorized recruiter can perform this operation.
+
+        Contract limitation: The allowed source-to-target transitions,
+        repeated updates, concurrency handling, and exact resource-ownership
+        authorization rule are not specified in this portfolio.
+        These questions are recorded in docs/en/contract-decision-record.md.
 
       security:
         - bearerAuth: []
