@@ -109,3 +109,8 @@ curl -X POST \
 | `403` | The authenticated user cannot create jobs. |
 
 See [Error handling](errors.md) for the common error response format.
+
+
+---
+
+**Navigation:** [English documentation index](README.md) · [Bản tiếng Việt](../vi/jobs-api.md)

@@ -4,6 +4,13 @@ Tài liệu này minh họa cách thông báo các **breaking change** cho nhà 
 
 > Đây là kịch bản migration giả lập. File `openapi.yaml` trong repository hiện mô tả API v1.1.0, không phải một API v2 đã triển khai.
 
+## Bảng tóm tắt breaking change
+
+| Thay đổi | v1 | v2 giả định | Hành động của client |
+|---|---|---|---|
+| Trường chủ sở hữu tin tuyển dụng | `recruiterId` | `ownerId` | Cập nhật tham chiếu trường và kiểu dữ liệu |
+| Trạng thái ứng tuyển | `pending`, `accepted`, `rejected` | `pending`, `approved`, `declined` | Cập nhật điều kiện, ánh xạ và kiểm thử |
+
 ## Tổng quan
 
 Phiên bản v2 đưa ra hai thay đổi không tương thích ngược:
@@ -100,3 +107,8 @@ Trước khi chuyển traffic production sang v2:
 - [ ] Chuyển tích hợp sang base URL của v2.
 
 [← Mục lục tiếng Việt](README.md) · [English](../en/migration-v1-to-v2.md)
+
+
+---
+
+**Điều hướng:** [Mục lục tiếng Việt](README.md) · [English version](../en/migration-v1-to-v2.md)

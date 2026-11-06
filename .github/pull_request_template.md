@@ -25,3 +25,7 @@ Which endpoints, schemas, or user workflows are affected?
 - [ ] Terminology checked against the style guide
 - [ ] CHANGELOG updated when required
 - [ ] Release notes updated when required
+
+- [ ] English and Vietnamese documentation checked for parity
+- [ ] Mock limitations and assumptions accurately stated
+- [ ] Contract checks distinguished from runtime checks

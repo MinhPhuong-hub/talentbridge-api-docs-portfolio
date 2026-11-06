@@ -1,62 +1,37 @@
 # Documentation contribution workflow
 
-TalentBridge documentation follows a docs-as-code workflow.
+TalentBridge is a fictional docs-as-code case study. This workflow is a recommended process, not evidence of reviews by a real engineering team.
 
-## 1. Create a branch
-
-Example:
+## 1. Create a documentation branch
 
 ```bash
-git checkout -b docs/update-application-errors
+git switch -c docs/update-application-errors
 ```
 
-## 2. Update the source of truth
+## 2. Update the API contract and both languages
 
-If API behavior changes, update `openapi.yaml` before or together with
-the related developer documentation.
+When documented API behavior changes, update `openapi.yaml` and the corresponding pages under `docs/en/` and `docs/vi/`. Preserve names, statuses, examples, and the intent of both translations. Consult the [English style guide](docs/style-guide.md) and [Vietnamese style guide](docs/vi/style-guide.md). If behavior is undefined, record a question instead of inventing a rule.
 
-Documentation must not intentionally contradict the API contract.
+## 3. Contract and documentation verification
 
-## 3. Run the mock API
+Prism can demonstrate selected examples generated from the OpenAPI contract. Check the OpenAPI structure, request/response shapes, example payloads, documented response statuses, Markdown links, and bilingual consistency. Run:
 
 ```bash
 npx @stoplight/prism-cli mock openapi.yaml
 ```
 
-## 4. Verify examples
+Then try the local scripts described in [examples/README.md](examples/README.md). The mock is useful for inspecting examples, but a mocked status is not proof that business logic enforces it.
 
-Run any affected curl examples against the mock server.
+## 4. Runtime/backend verification (out of scope)
 
-Check:
+Real authentication, authorization, persistence, business-rule enforcement, and external-service integration require an implemented backend and a dedicated test/staging environment. None are provided by this portfolio; do not claim these checks passed.
 
-- method and path
-- parameters
-- request body
-- response status
-- response schema
-- documented error behavior
+## 5. Communicate changes
 
-## 5. Review terminology
+Update `CHANGELOG.md` and bilingual release notes for relevant changes. If a real contract-breaking change is proposed, prepare corresponding migration guidance in both languages. The current v1 → v2 migration guide is only a hypothetical example.
 
-Check the documentation against `docs/style-guide.md`.
+## 6. Open a pull request
 
-## 6. Document API changes
+Explain what changed, the reason, affected operations and languages, compatibility implications, tests actually performed, limitations, and outstanding questions. Review the English–Vietnamese parity before merging.
 
-For externally visible API changes, update:
-
-- `CHANGELOG.md`
-- release notes
-- migration documentation if the change is breaking
-
-## 7. Open a pull request
-
-The pull request should explain:
-
-- what changed
-- why it changed
-- which API operations are affected
-- whether the change is breaking
-- how the documentation was verified
-
-Documentation changes are reviewed before merge in the same way as
-code changes.
+No reviewer approval or backend verification is implied by the existence of this workflow.

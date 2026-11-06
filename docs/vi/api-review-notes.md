@@ -69,3 +69,8 @@ Server lấy `recruiterId` từ nhà tuyển dụng đã xác thực.
 Khi hành vi API chưa rõ, người viết tài liệu không nên tự đặt ra quy tắc. Cần xác định điểm mơ hồ, hỏi kỹ sư hoặc người phụ trách nghiệp vụ, ghi lại quyết định và cập nhật đồng bộ API contract cùng tài liệu.
 
 [← Mục lục tiếng Việt](README.md) · [English](../en/api-review-notes.md)
+
+
+---
+
+**Điều hướng:** [Mục lục tiếng Việt](README.md) · [English version](../en/api-review-notes.md)

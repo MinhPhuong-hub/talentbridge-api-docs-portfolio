@@ -61,3 +61,14 @@ Không tìm thấy tài nguyên được yêu cầu. Kiểm tra lại mã địn
 Request xung đột với trạng thái hiện tại của hệ thống. Ví dụ, API trả về `409` khi cùng một ứng viên gửi hồ sơ ứng tuyển lần thứ hai cho cùng một việc làm.
 
 [← Mục lục tiếng Việt](README.md) · [English](../en/errors.md)
+
+
+---
+
+**Điều hướng:** [Mục lục tiếng Việt](README.md) · [English version](../en/errors.md)
+
+## Xử lý lỗi ở phía client
+
+Dùng HTTP status để phân loại cách xử lý và `type` để nhận diện loại sự cố trong hợp đồng được mô tả. Không dùng `detail` làm mã lỗi ổn định để lập trình. Với `409` khi nộp ứng tuyển, không tự động gửi lại request giống hệt. Case study chưa xác định retry interval, request ID hay hợp đồng idempotency key.
+
+**Lưu ý Prism:** `Prefer: code=409` chỉ tạo response mô phỏng, không xác minh thuật toán phát hiện ứng tuyển trùng.

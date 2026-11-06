@@ -1,10 +1,31 @@
 # TalentBridge Recruitment API Documentation
-**Language:** [English](README.md) | [Tiếng Việt](README.vi.md)
+
+**Language:** English | [Tiếng Việt](README.vi.md)
+
 > Portfolio case study demonstrating API documentation, OpenAPI,
 > developer experience, docs-as-code, bilingual technical writing,
 > and API change management.
 
 **TalentBridge is a fictional recruitment platform created for this portfolio project.**
+
+## Portfolio highlights
+
+API documentation portfolio showcasing OpenAPI, docs-as-code, runnable examples, bilingual technical writing, and API change management.
+
+| Artifact | What it demonstrates |
+|---|---|
+| [`openapi.yaml`](openapi.yaml) | Contract-first API reference |
+| [API review notes](docs/en/api-review-notes.md) | Requirement ambiguity and portfolio assumptions |
+| [Jobs API](docs/en/jobs-api.md) | Developer-focused reference |
+| [Applications API](docs/en/applications-api.md) | Submission, review, status update and known contract gaps |
+| [Contract decision record](docs/en/contract-decision-record.md) | Explicit assumptions and unresolved questions |
+| [Quality gates](docs/en/documentation-quality-gates.md) | Publish-time checks |
+| [Error handling](docs/en/errors.md) | Status codes and troubleshooting |
+| [Release notes](docs/en/release-notes/v1.1.0.md) | User-facing change communication |
+| [Migration guide](docs/en/migration-v1-to-v2.md) | Fictional breaking-change scenario |
+| [Style guide](docs/style-guide.md) | Editorial consistency |
+| [Runnable examples](examples/README.md) | Local contract/mock demonstrations |
+| [English docs](docs/en/README.md) / [Tiếng Việt](docs/vi/README.md) | Bilingual documentation |
 
 ## About this project
 
@@ -68,11 +89,15 @@ curl \
   http://127.0.0.1:4010/jobs
 ```
 
+**Mock-server scope:** Prism generates responses from `openapi.yaml`. It is not a production backend and cannot prove real authentication, authorization, persistence, business-rule enforcement, or service integrations.
+
 ## Documentation
 
-- [Getting started](docs/en/getting-started.md)
+- [Getting started](docs/en/README.md)
 - [Authentication](docs/en/authentication.md)
 - [Jobs API](docs/en/jobs-api.md)
+- [Applications API](docs/en/applications-api.md)
+- [Contract decision record](docs/en/contract-decision-record.md)
 - [Error handling](docs/en/errors.md)
 - [API review notes](docs/en/api-review-notes.md)
 - [Migration guide](docs/en/migration-v1-to-v2.md)
@@ -111,3 +136,13 @@ Identifying breaking changes and documenting release impact and migration steps.
 
 **Bilingual technical writing**
 Maintaining equivalent Vietnamese and English documentation while preserving technical meaning.
+
+## Verify documentation before publishing
+
+```bash
+python -m pip install -r requirements-docs.txt
+python scripts/audit_docs.py
+python scripts/check_openapi.py
+```
+
+These checks validate Markdown structure, relative links, and OpenAPI examples **against the written contract**, not against a production backend. GitHub Actions also runs an OpenAPI linter. For a guided review, start with the [portfolio case study](docs/en/portfolio-case-study.md), then follow the [contract decision record](docs/en/contract-decision-record.md).

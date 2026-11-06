@@ -65,3 +65,11 @@ Không chỉ ghi mã HTTP; phải giải thích nguyên nhân, cách xác địn
 - Mỗi khi API contract thay đổi, kiểm tra cả tài liệu tiếng Anh lẫn tiếng Việt.
 
 [← Mục lục tiếng Việt](README.md) · [English style guide](../style-guide.md)
+
+
+## Quy tắc dùng từ `Job`
+
+- Dùng **“việc làm”** khi nói về cơ hội việc làm từ góc nhìn ứng viên.
+- Dùng **“tin tuyển dụng”** khi nói về tin đăng do nhà tuyển dụng tạo hoặc quản lý.
+- Giữ nguyên **`Job`** khi nói về resource hoặc schema của API.
+- Không dịch định danh kỹ thuật như `jobId`, `recruiterId`, `nextCursor` và các giá trị enum.

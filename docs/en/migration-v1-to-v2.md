@@ -3,6 +3,15 @@
 This document demonstrates how breaking API changes should be
 communicated to integration developers.
 
+> **Fictional portfolio scenario:** This guide illustrates how breaking changes would be communicated. The repository currently specifies API **v1.1.0**; API v2 is **not implemented** here.
+
+## Breaking-change summary
+
+| Change | v1 | Hypothetical v2 | Client action |
+|---|---|---|---|
+| Job owner field | `recruiterId` | `ownerId` | Update property references and types |
+| Application status | `pending`, `accepted`, `rejected` | `pending`, `approved`, `declined` | Update status comparisons, mappings and tests |
+
 ## Overview
 
 Version 2 introduces two breaking changes:
@@ -99,3 +108,8 @@ Before switching production traffic to v2:
 - verify v2 responses in a staging environment
 - deploy the client changes
 - switch the integration to the v2 base URL
+
+
+---
+
+**Navigation:** [English documentation index](README.md) · [Bản tiếng Việt](../vi/migration-v1-to-v2.md)
